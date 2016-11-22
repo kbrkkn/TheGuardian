@@ -52,7 +52,8 @@ public final class QueryHelper {
                 JSONObject resultObject= resultsArray.getJSONObject(i);
                 String section=resultObject.getString("sectionName");
                 String title=resultObject.getString("webTitle");
-                News news=new News(section,title);
+                String webUrl=resultObject.getString("webUrl");
+                News news=new News(section,title,webUrl);
                 newsList.add(news);//add to list News object
             }
 

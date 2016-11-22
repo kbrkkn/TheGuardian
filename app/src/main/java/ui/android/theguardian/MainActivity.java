@@ -2,13 +2,16 @@ package ui.android.theguardian;
 import android.app.LoaderManager;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
+import android.content.Intent;
 import android.content.Loader;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -36,6 +39,17 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<A
         ListView listView=(ListView)findViewById(R.id.listViewId);
         newsAdapter=new NewsAdapter(this,R.layout.activity_main,new ArrayList<News>());
         listView.setAdapter(newsAdapter);
+        //habere tıklandığında,haberi tamamını web sitesinde görüntületir.
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                News currentNews=newsAdapter.getItem(i);
+                Uri newsUri=Uri.parse(currentNews.getUrl());
+                Intent webSite=new Intent(Intent.ACTION_VIEW,newsUri);
+                startActivity(webSite);
+            }
+        });
         listView.setEmptyView(emptyView);
         connectivityManager=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         networkInfo=connectivityManager.getActiveNetworkInfo();

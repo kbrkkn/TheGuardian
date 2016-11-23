@@ -5,21 +5,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@android:color/white"
+    android:background="@android:color/holo_blue_dark"
+    android:minHeight="@dimen/list_item_height"
+    android:paddingLeft="16dp"
     tools:context="ui.android.theguardian.MainActivity">
 
     <TextView
         android:id="@+id/sectionId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textAppearance="?android:textAppearanceMedium"
         android:textAllCaps="true"
         android:textStyle="bold"
+        android:gravity="bottom"
+        android:textColor="@android:color/white"
         tools:text="Section" />
     <TextView
         android:id="@+id/titleId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="italic"
-
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="top"
+        android:textColor="@android:color/white"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textStyle="normal"
         tools:text="Title" />
 </LinearLayout>
